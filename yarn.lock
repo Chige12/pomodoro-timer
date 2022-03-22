@@ -3336,7 +3336,7 @@ etag@^1.8.1, etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
-events@^3.0.0:
+events@^3.0.0, events@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
   integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
@@ -6957,6 +6957,13 @@ snapdragon@^0.8.1:
     source-map "^0.5.6"
     source-map-resolve "^0.5.0"
     use "^3.1.0"
+
+snd-lib@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/snd-lib/-/snd-lib-1.0.2.tgz#fde38f752f7249f1d4fddbadb61491b237502574"
+  integrity sha512-mh4fKOmgqkTz40Iigp3G34ZYq8qQcCvdW9iYozf20wqxQCu+p9PbzAIAIj2q/OeOmkANlVOSruo/PJOY3O68QA==
+  dependencies:
+    events "^3.3.0"
 
 sort-keys@^1.0.0:
   version "1.1.2"

@@ -6,8 +6,8 @@
       <div class="ui">
         <p class="step">Step {{step}} {{nowStatus}}</p>
         <p class="time">{{ formatTime }}</p>
-        <v-btn outlined large @click="start" v-if="!timerOn">START</v-btn>
-        <v-btn outlined large @click="stop" v-if="timerOn">STOP</v-btn>
+        <v-btn outlined large @click="startWithSound" v-if="!timerOn">START</v-btn>
+        <v-btn outlined large @click="stopWithSound" v-if="timerOn">STOP</v-btn>
       </div>
     </div>
     <v-card outlined class="mt-4">
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-
+import Snd from 'snd-lib';
 import ProgressBar from 'progressbar.js'
 
 export default {
@@ -38,9 +38,11 @@ export default {
       timerObj: null,
       progressBar: null,
       isFirstLoad: true,
+      snd: null,
     };
   },
   mounted() {
+    this.sndSetup()
     this.sec = this.taskTime
     const options = {
       color: '#3a3a3a',
@@ -59,18 +61,32 @@ export default {
     }
   },
   methods: {
+    sndSetup() {
+      this.snd = new Snd();
+      this.snd.load(Snd.KITS.SND01).then(() => {
+        console.log('loaded')
+      })
+    },
     nextSec() {
       const isBreak = this.step % 2 === 0
       return isBreak ? this.breakTime : this.taskTime
     },
     count() {
+      this.sec -= 1
+      const nextSec = this.nextSec()
+      this.progressBar.set(this.sec / nextSec)
       if(this.sec === 0){
         this.finish()
         return;
       }
-      this.sec -= 1
-      const nextSec = this.nextSec()
-      this.progressBar.set(this.sec / nextSec)
+    },
+    startWithSound() {
+      this.snd.play(Snd.SOUNDS.TOGGLE_ON);
+      this.start()
+    },
+    stopWithSound() {
+      this.snd.play(Snd.SOUNDS.TOGGLE_OFF);
+      this.stop()
     },
     start() {
       const self = this;
@@ -89,6 +105,10 @@ export default {
       this.timerOn = false; 
     },
     finish() {
+      this.snd.play(Snd.SOUNDS.RINGTONE_LOOP)
+      setTimeout(() => {
+        this.snd.stop(Snd.SOUNDS.RINGTONE_LOOP)
+      }, 2000)
       this.step += 1
       this.reset()
       const isBreak = this.step % 2 === 0
