@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
+const SITE_URL = 'https://pomodotimer.netlify.app'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -75,6 +77,11 @@ export default {
 
   pwa: {
     meta: {
+      name: 'サントリー Pomodoro Timer',
+      description: 'Pomodoro timer',
+      theme_color: '#000',
+      lang: 'ja',
+      ogHost: 'https://pomodotimer.netlify.app/',
       mobileApp: true,
       mobileAppIOS: true,
       appleStatusBarStyle: 'black',
