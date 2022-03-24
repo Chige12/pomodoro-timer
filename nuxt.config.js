@@ -6,9 +6,9 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - timer',
-    title: 'timer',
+    title: 'Pomodoro Timer',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
@@ -77,7 +77,7 @@ export default {
 
   pwa: {
     meta: {
-      name: 'サントリー Pomodoro Timer',
+      name: 'Pomodoro Timer',
       description: 'Pomodoro timer',
       theme_color: '#000',
       lang: 'ja',
@@ -88,7 +88,7 @@ export default {
     },
     manifest: {
       lang: 'ja',
-      name: "サントリー Pomodoro Timer",
+      name: "Pomodoro Timer",
       short_name: "Pomo Timer",
       description: 'Pomodoro timer',
       display: 'standalone',
